@@ -8,10 +8,12 @@
 
 int main(void)
 {
-	char c;
+	int c;
 
-	for(c = "0"; c <= "9"; c++);
-	putchar(c);
+	for(c = 0; c <= 9; c++)
+		printf("%d", c);
+
+	pritnf("\n");
 
 	return (0);
 }
