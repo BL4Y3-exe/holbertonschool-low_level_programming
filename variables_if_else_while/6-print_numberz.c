@@ -8,14 +8,12 @@
 
 int main(void)
 {
-	int i;
+	int n;
 
-	for (i = 0; i <= 9; i++)
-	{
-		putchar(i + "0");
-	}
+	for (n = 0; n <= 9; n++)
+		putchar(n + '0');
 	
-	putchar("\n");
+	putchar('\n');
 
 	return 0;
 }
