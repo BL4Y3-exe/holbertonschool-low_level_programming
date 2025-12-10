@@ -1,10 +1,12 @@
 #include "main.h"
+
 /**
-* _strcat - concerates two strings
-* @dest: destination
-* @src: source
-*
-* Return: dest*/
+ * _strcat - conceretanes two strings
+ * @dest: destination
+ * @src: source
+ *
+ * Return: dest
+ */
 char *_strcat(char *dest, char *src)
 {
     int i = 0;
@@ -14,7 +16,7 @@ char *_strcat(char *dest, char *src)
     {
         i++;
     }
-    
+
     while (src[j] != '\0')
     {
         dest[i] = src[j];
