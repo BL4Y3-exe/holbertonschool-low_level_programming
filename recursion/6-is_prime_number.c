@@ -15,7 +15,7 @@ int helper(int n, int d)
 	if (n % d == 0)
 		return (0);
 
-	return (_is_prime_helper(n, d + 1));
+	return (helper(n, d + 1));
 }
 
 /**
