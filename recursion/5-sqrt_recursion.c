@@ -15,7 +15,7 @@ int helper(int n, int prbl)
     if (prbl * prbl > n)
         return (-1);
 
-    return (helper (n, prbl + 1))
+    return (helper (n, prbl + 1));
 }
 
 /**
