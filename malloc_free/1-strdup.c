@@ -3,7 +3,7 @@
 
 char *_strdup(char *str)
 {
-    char *dup
+    char *dup;
     unsigned i; len = 0;
 
     if (str == NULL)
