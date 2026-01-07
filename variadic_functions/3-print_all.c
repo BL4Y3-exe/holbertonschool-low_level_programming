@@ -8,7 +8,7 @@
  */
 static void print_char(va_list args)
 {
-    printf("%c", va_arg(args, int));
+	printf("%c", va_arg(args, int));
 }
 
 /**
@@ -17,7 +17,7 @@ static void print_char(va_list args)
  */
 static void print_int(va_list args)
 {
-    printf("%d", va_arg(args, int));
+	printf("%d", va_arg(args, int));
 }
 
 /**
@@ -26,7 +26,7 @@ static void print_int(va_list args)
  */
 static void print_float(va_list args)
 {
-    printf("%f", va_arg(args, double));
+	printf("%f", va_arg(args, double));
 }
 
 /**
@@ -35,15 +35,15 @@ static void print_float(va_list args)
  */
 static void print_string(va_list args)
 {
-    char *str;
+	char *str;
 
-    str = va_arg(args, char *);
-    if (str == NULL)
-    {
-        printf("(nil)");
-        return;
-    }
-    printf("%s", str);
+	str = va_arg(args, char *);
+	if (str == NULL)
+	{
+		printf("(nil)");
+		return;
+	}
+	printf("%s", str);
 }
 
 /**
@@ -52,41 +52,41 @@ static void print_string(va_list args)
  */
 void print_all(const char * const format, ...)
 {
-    unsigned int i = 0, j;
-    char *separator = "";
-    va_list args;
+	unsigned int i = 0, j;
+	char *separator = "";
+	va_list args;
 
-    typedef struct printer
-    {
-        char symbol;
-        void (*print)(va_list);
-    } printer_t;
+	typedef struct printer
+	{
+		char symbol;
+		void (*print)(va_list);
+	} printer_t;
 
-    printer_t printers[] = {
-        {'c', print_char},
-        {'i', print_int},
-        {'f', print_float},
-        {'s', print_string}
-    };
+	printer_t printers[] = {
+		{'c', print_char},
+		{'i', print_int},
+		{'f', print_float},
+		{'s', print_string}
+	};
 
-    va_start(args, format);
+	va_start(args, format);
 
-    while (format && format[i])
-    {
-        j = 0;
-        while (j < 4)
-        {
-            if (format[i] == printers[j].symbol)
-            {
-                printf("%s", separator);
-                printers[j].print(args);
-                separator = ", ";
-            }
-            j++;
-        }
-        i++;
-    }
+	while (format && format[i])
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (format[i] == printers[j].symbol)
+			{
+				printf("%s", separator);
+				printers[j].print(args);
+				separator = ", ";
+			}
+			j++;
+		}
+		i++;
+	}
 
-    va_end(args);
-    printf("\n");
+	va_end(args);
+	printf("\n");
 }
