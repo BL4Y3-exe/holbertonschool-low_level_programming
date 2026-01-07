@@ -56,17 +56,18 @@ void print_all(const char * const format, ...)
 	char *separator = "";
 	va_list args;
 
-	typedef struct printer
+	struct printer
 	{
 		char symbol;
 		void (*print)(va_list);
-	} printer_t;
+	};
 
-	printer_t printers[] = {
+	struct printer printers[] = {
 		{'c', print_char},
 		{'i', print_int},
 		{'f', print_float},
-		{'s', print_string}
+		{'s', print_string},
+		{'\0', NULL}
 	};
 
 	va_start(args, format);
