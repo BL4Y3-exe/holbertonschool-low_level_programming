@@ -3,6 +3,17 @@
 #include <stdarg.h>
 
 /**
+ * struct printer - structure that matches format symbols
+ * @symbol: the format specifier character
+ * @print: function pointer that prints the argument
+ */
+struct printer
+{
+    char symbol;
+    void (*print)(va_list);
+};
+
+/**
  * print_char - prints a char
  * @args: argument list
  */
@@ -35,10 +46,9 @@ static void print_float(va_list args)
  */
 static void print_string(va_list args)
 {
-	char *str;
+	char *str = va_arg(args, char *);
 
-	str = va_arg(args, char *);
-	if (str == NULL)
+	if (!str)
 	{
 		printf("(nil)");
 		return;
@@ -56,16 +66,6 @@ void print_all(const char * const format, ...)
 	char *separator = "";
 	va_list args;
 
-	/**
-	 * struct printer - structure that matches format symbols
-	 * @symbol: the format specifier character
-	 * @print: function pointer that prints the argument
-	 */
-	struct printer
-	{
-		char symbol;
-		void (*print)(va_list);
-	};
 	struct printer printers[] = {
 		{'c', print_char},
 		{'i', print_int},
@@ -73,6 +73,7 @@ void print_all(const char * const format, ...)
 		{'s', print_string},
 		{'\0', NULL}
 	};
+
 	va_start(args, format);
 	while (format && format[i])
 	{
