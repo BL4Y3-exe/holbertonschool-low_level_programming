@@ -74,9 +74,7 @@ void print_all(const char * const format, ...)
 		{'s', print_string},
 		{'\0', NULL}
 	};
-
 	va_start(args, format);
-
 	while (format && format[i])
 	{
 		j = 0;
@@ -92,7 +90,6 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 	}
-
 	va_end(args);
 	printf("\n");
 }
