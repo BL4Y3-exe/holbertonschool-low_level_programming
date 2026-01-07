@@ -47,7 +47,7 @@ static void print_string(va_list args)
 }
 
 /**
- * print_all - prints anything
+ * print_all - prints anything based on format string
  * @format: list of types of arguments
  */
 void print_all(const char * const format, ...)
@@ -56,17 +56,16 @@ void print_all(const char * const format, ...)
 	char *separator = "";
 	va_list args;
 
-/**
-* struct printer - structure that matches format symbols
-* @symbol: the format specifier character
-* @f: function pointer that prints the argument
-*/
+	/**
+	 * struct printer - structure that matches format symbols
+	 * @symbol: the format specifier character
+	 * @print: function pointer that prints the argument
+	 */
 	struct printer
 	{
 		char symbol;
 		void (*print)(va_list);
 	};
-
 	struct printer printers[] = {
 		{'c', print_char},
 		{'i', print_int},
