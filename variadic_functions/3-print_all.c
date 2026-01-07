@@ -35,9 +35,10 @@ static void print_float(va_list args)
  */
 static void print_string(va_list args)
 {
-	char *str = va_arg(args, char *);
+	char *str;
 
-	if (!str)
+	str = va_arg(args, char *);
+	if (str == NULL)
 	{
 		printf("(nil)");
 		return;
@@ -46,7 +47,7 @@ static void print_string(va_list args)
 }
 
 /**
- * print_all - prints anything based on format string
+ * print_all - prints anything
  * @format: list of types of arguments
  */
 void print_all(const char * const format, ...)
@@ -54,6 +55,12 @@ void print_all(const char * const format, ...)
 	unsigned int i = 0, j;
 	char *separator = "";
 	va_list args;
+
+	struct printer
+	{
+		char symbol;
+		void (*print)(va_list);
+	};
 
 	struct printer printers[] = {
 		{'c', print_char},
