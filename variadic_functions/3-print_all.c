@@ -3,17 +3,6 @@
 #include <stdarg.h>
 
 /**
- * struct printer - structure that matches format symbols
- * @symbol: the format specifier character
- * @print: function pointer that prints the argument
- */
-struct printer
-{
-    char symbol;
-    void (*print)(va_list);
-};
-
-/**
  * print_char - prints a char
  * @args: argument list
  */
